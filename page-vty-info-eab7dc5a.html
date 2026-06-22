@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V体育 · 知识型运动视野</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fce9d8 0%, #f7d9c4 40%, #f2c8ae 100%);
+      min-height: 100vh;
+      color: #2e2b28;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    /* 白色卡片层 */
+    .card {
+      background: rgba(255, 248, 240, 0.92);
+      backdrop-filter: blur(2px);
+      border-radius: 2.4rem;
+      padding: 2.5rem 2.8rem;
+      box-shadow: 0 12px 30px rgba(160, 100, 50, 0.12), 0 4px 10px rgba(0, 0, 0, 0.03);
+      margin-bottom: 2.2rem;
+      transition: box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 18px 40px rgba(140, 80, 30, 0.10);
+    }
+
+    /* hero 区 */
+    .hero {
+      text-align: center;
+      padding: 2rem 0 1.2rem 0;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 580;
+      letter-spacing: -0.02em;
+      color: #3f2c1e;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .subhead {
+      font-size: 1.25rem;
+      color: #6f5542;
+      border-bottom: 1px solid rgba(190, 150, 120, 0.25);
+      display: inline-block;
+      padding-bottom: 0.4rem;
+      margin-top: 0.2rem;
+    }
+
+    .hero .welcome-tag {
+      margin-top: 1.8rem;
+      font-size: 1.05rem;
+      background: rgba(220, 180, 140, 0.18);
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      display: inline-block;
+      color: #533e2c;
+    }
+
+    /* 通用标题与段落 */
+    h2 {
+      font-size: 1.7rem;
+      font-weight: 540;
+      color: #3b2a1c;
+      margin-bottom: 0.9rem;
+      letter-spacing: -0.01em;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 40%;
+      height: 3px;
+      background: #dbb594;
+      border-radius: 6px;
+      margin-top: 6px;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: #3f342b;
+    }
+
+    .highlight {
+      background: linear-gradient(to right, #f6e3d4, transparent);
+      padding: 0 0.3rem;
+    }
+
+    /* 优势卡片集群 */
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin: 1.6rem 0 0.6rem;
+    }
+
+    .advantage-item {
+      background: rgba(250, 240, 230, 0.6);
+      border-radius: 1.8rem;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid rgba(200, 160, 125, 0.15);
+    }
+
+    .advantage-item h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #553e2a;
+      margin-bottom: 0.5rem;
+    }
+
+    .advantage-item p {
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    /* 说明区 + 场景 */
+    .scene-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin: 1rem 0;
+    }
+
+    .scene-block {
+      flex: 1 1 200px;
+      background: #f9efE6;
+      border-radius: 1.6rem;
+      padding: 1.2rem 1.4rem;
+      border-left: 5px solid #dbb594;
+    }
+
+    .scene-block h4 {
+      font-weight: 560;
+      color: #553e2a;
+      margin-bottom: 0.4rem;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .faq-q {
+      background: #f7ede2;
+      padding: 0.6rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 480;
+      color: #3f2b1b;
+      border: 1px solid rgba(190, 150, 115, 0.2);
+    }
+
+    .faq-a {
+      padding: 0.2rem 1.2rem 0.8rem 1.2rem;
+      font-size: 0.95rem;
+      color: #4e3d2f;
+    }
+
+    /* 底部链接区 */
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 2.5rem;
+      padding: 1.4rem 0 0.6rem;
+      border-top: 1px solid rgba(170, 130, 100, 0.2);
+      margin-top: 0.6rem;
+    }
+
+    .footer-links a {
+      color: #3f2c1e;
+      text-decoration: none;
+      font-weight: 480;
+      background: rgba(220, 180, 140, 0.12);
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      transition: background 0.2s, transform 0.1s;
+      white-space: nowrap;
+    }
+
+    .footer-links a:hover {
+      background: rgba(210, 165, 120, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .strong-link {
+      background: linear-gradient(145deg, #dbb594, #d0a47b);
+      color: #2d1f12 !important;
+      font-weight: 520;
+      padding: 0.3rem 1.2rem;
+      box-shadow: 0 2px 4px rgba(150, 90, 40, 0.08);
+    }
+
+    .strong-link:hover {
+      background: linear-gradient(145deg, #d0a47b, #c6956a);
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #6f5b4b;
+      margin-top: 1.2rem;
+      text-align: center;
+      border-top: 1px dashed rgba(170, 130, 100, 0.2);
+      padding-top: 1.2rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 680px) {
+      .card {
+        padding: 1.8rem 1.2rem;
+        border-radius: 1.8rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .scene-wrapper {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        gap: 0.8rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- hero 区 -->
+  <div class="card hero">
+    <h1>V体育 · 持续关注的视野</h1>
+    <div class="subhead">再访 · 收藏 · 知识演进</div>
+    <div class="welcome-tag">⚡ 再次回到这里，总有不同的发现</div>
+  </div>
+
+  <!-- 优势区：从再次访问和收藏切入 -->
+  <div class="card">
+    <h2>为何值得再次打开</h2>
+    <p>运动数据与赛事分析并非静态信息。当你将 <a href="https://page-vty.com" class="strong-link" style="display:inline; background:transparent; box-shadow:none; padding:0; font-weight:500; text-decoration:underline; text-underline-offset:4px;">V体育</a> 加入书签或常驻收藏夹，你获得的不仅是一个入口，更是一种持续更新的知识陪伴。我们的内容围绕运动科学、赛事回顾与技术趋势展开，每次访问都可能刷新你对某项运动的认知。</p>
+
+    <div class="advantages-grid">
+      <div class="advantage-item">
+        <h3>📌 收藏即积累</h3>
+        <p>页面结构优先信息层级，便于快速定位你感兴趣的版块。无论你上次浏览到哪一部分，再次返回时都能无缝衔接。</p>
+      </div>
+      <div class="advantage-item">
+        <h3>🔄 内容常新</h3>
+        <p>我们定期整合赛事数据、训练理念与运动文化分析，不做流水账式更新，而是提供具有时间跨度的观察。</p>
+      </div>
+      <div class="advantage-item">
+        <h3>🧠 知识型视角</h3>
+        <p>不只是比分与新闻，我们更关注运动背后的逻辑——体能周期、战术演变、规则沿革，这些才是深度爱好者持续关注的理由。</p>
+      </div>
+      <div class="advantage-item">
+        <h3>🏷️ 轻量收藏体验</h3>
+        <p>无需复杂注册，浏览器书签或稍后阅读工具即可。我们的设计强调低打扰、高信息密度的阅读节奏。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 说明区 + 场景 -->
+  <div class="card">
+    <h2>适合反复回访的场景</h2>
+    <p>不论你是运动爱好者、业余分析师，还是希望拓展知识边界的读者，以下场景都能与你的收藏习惯产生共鸣。</p>
+
+    <div class="scene-wrapper">
+      <div class="scene-block">
+        <h4>🏃 赛前准备</h4>
+        <p>查阅历史对阵趋势、运动员状态变化，形成自己的赛前笔记。再次访问时补充最新数据。</p>
+      </div>
+      <div class="scene-block">
+        <h4>📚 知识沉淀</h4>
+        <p>将感兴趣的文章或专题加入收藏夹，隔段时间再读，常读常新。运动知识需要反复咀嚼。</p>
+      </div>
+      <div class="scene-block">
+        <h4>📊 横向比较</h4>
+        <p>不同赛季、不同规则下的运动表现对比，收藏多个页面便于随时跨时间参考。</p>
+      </div>
+    </div>
+    <p style="margin-top:0.8rem;">每一次返回 <a href="https://page-vty.com" style="color:#6f4f36; font-weight:500; text-decoration:underline; text-underline-offset:5px;">V体育</a>，你都在构建属于自己的运动知识图谱。我们提供素材，而串联与发现由你完成。</p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="card">
+    <h2>来自读者的常见问题</h2>
+    <div class="faq-summary">
+      <div class="faq-q">▸ 页面内容多久调整一次？</div>
+      <div class="faq-a">根据不同运动赛季周期与热点，我们保持每月 3~5 次有质量的更新。收藏后再次访问不会感到重复。</div>
+
+      <div class="faq-q">▸ 需要注册或登录才能收藏吗？</div>
+      <div class="faq-a">完全不需要。你只需使用浏览器自带的书签功能或其他收藏工具即可。我们提倡无账号、低门槛的访问方式。</div>
+
+      <div class="faq-q">▸ 移动端阅读体验如何？</div>
+      <div class="faq-a">页面采用响应式设计，在手机与平板上同样保持清晰的信息层级与舒适的字体大小。适合随时调出收藏夹阅读。</div>
+
+      <div class="faq-q">▸ 如何快速找到之前看过的内容？</div>
+      <div class="faq-a">建议为 <a href="https://page-vty.com" style="color:#6f4f36; font-weight:500;">V体育</a> 建立专用书签文件夹，并按运动类别或时间排序，便于后续检索。</div>
+    </div>
+  </div>
+
+  <!-- 底部链接区 -->
+  <div class="card" style="padding-bottom:1.6rem;">
+    <div class="footer-links">
+      <a href="https://page-vty.com" class="strong-link">V体育</a>
+      <a href="#">运动知识库</a>
+      <a href="#">赛事手记</a>
+      <a href="#">训练观点</a>
+      <a href="#">关于本站</a>
+    </div>
+    <div class="note">
+       · 持续关注，是一种沉淀的态度 · <br>
+      <span style="font-size:0.8rem; opacity:0.5;">页面仅作知识分享，不构成任何投资或竞技建议。</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>
